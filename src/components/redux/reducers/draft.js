@@ -72,6 +72,5 @@ export const draftReducer = (state = initialState, action) => {
             fetchError: null
         });
     } 
-    console.log(action)
     return state;
 }

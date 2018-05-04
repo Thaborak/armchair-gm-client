@@ -8,7 +8,6 @@ export class AvailablePlayers extends React.Component {
   render() {
    let players
     if (this.props.players) {
-     console.log(this.props)
        players = this.props.players.slice().filter(players => !players.drafted);
       if (this.props.Pos) {
        players = players.filter(p => p.Pos.includes(this.props.Pos));
@@ -40,7 +39,6 @@ export class AvailablePlayers extends React.Component {
   };
  
 const mapStateToProps = (state) => {
-  // console.log(state.draft.players);
   return {
     players: state.draft.players,
   } 

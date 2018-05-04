@@ -7,13 +7,11 @@ import { connect } from 'react-redux';
 export default class DraftedPlayers extends React.Component {
   render() {
     let currentDraft = 0;
-    console.log(this.props)
     let players
     if (this.props.players) {
       let players = this.props.players.slice().filter(players => this.props.players.drafted);
       players = players.sort((a, b) => b.drafted - a.drafted);
     }
-    console.log(this.props.players);
 
     return (
       <div className='column4'>

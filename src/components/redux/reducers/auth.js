@@ -11,7 +11,6 @@ export const authReducer = function (state, action) {
 
         // Updates state upon fetch user success
         case FETCH_USER_SUCCESS:
-            console.log('FETCH_USER_SUCCESS');
             const user = action.user;
             const newState = Object.assign({}, state, {
                 players: user.players,

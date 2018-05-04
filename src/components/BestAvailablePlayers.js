@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 export default class BestAvailablePlayers extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div>
         <div className='column1'>

@@ -14,9 +14,7 @@ export class CheatSheet extends React.Component {
     this.props.dispatch(fetchPlayers());
   }
   render() {
-    console.log(this.props);
     if (this.props.loading) {
-      console.log('loading')
       return <Spinner Name="circle" fadeIn='none' />;
     }
 
@@ -52,7 +50,6 @@ export class CheatSheet extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.draft.players);
   return {
     players: state.draft.players,
     filteredPlayers: state.draft.filteredPlayers,

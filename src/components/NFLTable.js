@@ -17,7 +17,6 @@ export default class NFLTable extends React.Component {
     }
 
     return players.map((player, i) => {
-      //  console.log(player)
       return (
         <tr key={i} 
           className={('tier'+player.Tier)}
