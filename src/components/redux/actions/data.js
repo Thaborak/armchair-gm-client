@@ -63,39 +63,34 @@ export const fetchPlayers = () => (dispatch, getState) => {
     fetch(url, {
         method: 'GET',
     }).then(res => {
-        console.log(res);
         if (!res.ok) {
             return Promise.reject(res.statusText);
         }
         return res.json()
+        console.log("%chttps://www.linkedin.com/in/tom-h-759579a5/", "color: blue; font-size: x-large");
     })
         .then(players => dispatch(fetchPlayersSuccess(players)))
-        .then(players => console.log(players))
         .catch(err => dispatch(fetchPlayersError(err)));
 }
 
 export const searchPlayers = query => (dispatch) => {
     console.log(query)
         .then(query => dispatch(searchPlayerSuccess(query)))
-        .then(query => console.log(query))
 }
 
 export const draft = (player) => (dispatch) => {
     console.log(player)
         .then(player => dispatch(draftPlayerSuccess(player)))
-        .then(player => console.log(player))
 }
 
 export const undo = (currentDraft) => (dispatch) => {
      console.log(currentDraft)
         .then(currentDraft => dispatch(undoPlayerSuccess(currentDraft)))
-        .then(currentDraft => console.log(currentDraft))
 }
 
 export const reset = (dispatch) => {
     console.log('Reset Board')
         .then(() => dispatch(resetDraftSuccess()))
-        .then(() => console.log('Reset Board Success'))
 }
 export const save = () => {
     //========= coming soon =======//
