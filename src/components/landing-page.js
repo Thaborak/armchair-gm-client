@@ -20,7 +20,7 @@ export function LandingPage(props) {
             <br></br>
                 <div class="login">
             {/* <p>Win your League this Year!</p> */}
-            <a href="http://localhost:8080/api/auth/google"> <img type='button' value='login' src={google} className='input-button btn btn-success login-button'/></a>
+                <a href="https://armchair-gm.netlify.com/api/auth/google"> <img type='button' value='login' src={google} className='input-button btn btn-success login-button'/></a>
             </div>
         </div>
 
