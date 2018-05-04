@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '/Users/thaborak/Documents/Thinkful/tom-fantasy-football-war-room/client/src/config.js';
+import { API_BASE_URL } from '../../../config.js';
 
 export const FETCH_PLAYERS_REQUEST = 'FETCH_PLAYERS_REQUEST';
 export const fetchPlayersRequest = () => ({

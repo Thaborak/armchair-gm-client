@@ -16,7 +16,8 @@ export class CheatSheet extends React.Component {
   render() {
     console.log(this.props);
     if (this.props.loading) {
-      return <Spinner spinnerName="circle" noFadeIn />;
+      console.log('loading')
+      return <Spinner Name="circle" fadeIn='none' />;
     }
 
     if (this.props.fetchError) {
@@ -57,10 +58,10 @@ const mapStateToProps = (state) => {
     filteredPlayers: state.draft.filteredPlayers,
     currentDraft: state.draft.currentDraft,
     query: state.draft.query,
-    draftedPlayers: state.draft.draftedPlayers
+    draftedPlayers: state.draft.draftedPlayers,
+    loading: state.draft.loading
   }
 }
-
 
 
 

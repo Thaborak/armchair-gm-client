@@ -31,7 +31,7 @@ export const draftReducer = (state = initialState, action) => {
         });
     } else if (action.type === SEARCH_PLAYERS_SUCCESS) {
         let players = state.players.filter(player =>
-            player.Name.toUpperCase().includes(state.query.toUpperCase())
+            player.Name.toLowerCase().includes(action.query.toLowerCase())
         );
         return Object.assign({}, state, {
             filteredPlayers: players,
@@ -46,14 +46,22 @@ export const draftReducer = (state = initialState, action) => {
 
         }); 
     } else if (action.type === UNDO_DRAFT_SUCCESS) {
+        if (state.draftedPlayers.length === 0) {
+            alert('Nothing to Undo');
+            return state;
+        }
         const isDrafted = state.players.findIndex(players => players.drafted === state.currentDraft)
         return Object.assign({}, state, {
             currentDraft: state.currentDraft - 1,
             player: state.players[isDrafted].drafted = null,
-            draftedPlayers: [...state.draftedPlayers.slice(0, state.currentDraft), ...state.draftedPlayers.slice(state.currentDraft + 1)],
+            draftedPlayers: [...state.draftedPlayers.slice(0, state.currentDraft-1), ...state.draftedPlayers.slice(state.currentDraft, + 1)],
             fetchError: null
         });
     } else if (action.type === RESET_DRAFT_SUCCESS) {
+        if (state.draftedPlayers.length === 0) {
+            alert('Nothing to Reset');
+            return state;
+        }
         const isDrafted = state.players.filter(players => players.drafted !== null)
         return Object.assign({}, state, {
             currentDraft: state.currentDraft = 0,

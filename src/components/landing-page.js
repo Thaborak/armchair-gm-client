@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import google from '/Users/thaborak/Documents/Thinkful/tom-fantasy-football-war-room/client/src/btn_google_signin_dark_normal_web@2x.png';
+import google from '../btn_google_signin_dark_normal_web@2x.png';
 
 export function LandingPage(props) {
     // If we are logged in redirect straight to the user's dashboard
