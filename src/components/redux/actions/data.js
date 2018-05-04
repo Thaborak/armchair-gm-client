@@ -67,7 +67,6 @@ export const fetchPlayers = () => (dispatch, getState) => {
             return Promise.reject(res.statusText);
         }
         return res.json()
-        console.log("%chttps://www.linkedin.com/in/tom-h-759579a5/", "color: blue; font-size: x-large");
     })
         .then(players => dispatch(fetchPlayersSuccess(players)))
         .catch(err => dispatch(fetchPlayersError(err)));
