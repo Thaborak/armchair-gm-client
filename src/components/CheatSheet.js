@@ -5,7 +5,7 @@ import BestAvailablePlayersByPosition from './BestAvailablePlayersByPosition'
 import DraftedPlayers from './DraftedPlayers'
 import { addPlayer } from './redux/actions/team'
 import { connect } from 'react-redux';
-import { fetchPlayers, fetchPlayersRequest, searchPlayerSuccess, draftPlayerSuccess, undoPlayerSuccess, reset, save, filterPlayerSuccess, resetDraftSuccess } from './redux/actions/data'
+import { fetchPlayers, fetchPlayersRequest, searchPlayerSuccess, draftPlayerSuccess, undoPlayerSuccess, reset, save, filterPlayerSuccess, resetDraftSuccess, saveTeamSuccess } from './redux/actions/data'
 import Spinner from 'react-spinkit';
 import AvailablePlayers from './AvailablePlayers';
 import NFLTable from './NFLTable'
@@ -57,7 +57,7 @@ console.log("%chttps://www.linkedin.com/in/tom-h-759579a5", "color: blue; font-s
           players={this.props.draftedPlayers}
           undo={(currentDraft) => this.props.dispatch(undoPlayerSuccess(currentDraft))}
           reset={() => this.props.dispatch(resetDraftSuccess())}
-          save={() => this.props.save()}
+          save={(team) => this.props.dispatch(saveTeamSuccess(team))}
         />
       </div>
     );
@@ -71,7 +71,8 @@ const mapStateToProps = (state) => {
     currentDraft: state.draft.currentDraft,
     query: state.draft.query,
     draftedPlayers: state.draft.draftedPlayers,
-    loading: state.draft.loading
+    loading: state.draft.loading,
+    team: state.draft.team
   }
 }
 

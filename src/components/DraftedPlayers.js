@@ -22,13 +22,14 @@ export default class DraftedPlayers extends React.Component {
           {/* ========= RESET BUTTON ========= */}
           <button className='button2' onClick={() => this.props.reset()}>Reset</button>
           {/* =======SAVE TEAM FEATURE ========= */}
-          {/* <button className='button3' onClick={() => this.save(this.currentDraft)}>Save Team & End Draft</button> */}
+          <button className='button3' onClick={() => this.props.save()}>Save Team & End Draft</button>
         </div>
         <div className='padding-table draft'>
           <NFLTable
             fields={['Name', 'Pos', 'Bye']}
             players={this.props.players}
             disableColor={true}
+            onClick={(p) => this.props.Team(p)}
           />
         </div>
       </div>

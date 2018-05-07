@@ -55,6 +55,11 @@ export const resetDraftSuccess = () => ({
     type: RESET_DRAFT_SUCCESS,
 }) 
 
+export const SAVE_TEAM_SUCCESS = 'SAVE_TEAM_SUCCESS';
+export const saveTeamSuccess = (player) => ({
+    type: SAVE_TEAM_SUCCESS,
+    player
+})
 
 
 export const fetchPlayers = () => (dispatch, getState) => {
@@ -91,7 +96,7 @@ export const reset = (dispatch) => {
     console.log('Reset Board')
         .then(() => dispatch(resetDraftSuccess()))
 }
-export const save = () => {
-    //========= coming soon =======//
-    // this.props.dispatch(this.addPlayer(this.props.players));
+export const save = (player) => (dispatch) => {
+    console.log("Save Team")
+    .then(() => dispatch(saveTeamSuccess()))
 }
