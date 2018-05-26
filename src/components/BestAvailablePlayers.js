@@ -14,7 +14,7 @@ export default class BestAvailablePlayers extends React.Component {
             <input
               className='searchbar'
               type="text"
-              placeholder="Search"
+              placeholder="Search By Player ex: 'Todd Gurley'"
               onChange={this.props.search}
               value={this.props.query}
             />

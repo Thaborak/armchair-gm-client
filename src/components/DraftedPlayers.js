@@ -12,6 +12,7 @@ export default class DraftedPlayers extends React.Component {
       let players = this.props.players.slice().filter(players => this.props.players.drafted);
       players = players.sort((a, b) => b.drafted - a.drafted);
     }
+    console.log(this.props);
 
     return (
       <div className='column4'>
@@ -22,22 +23,14 @@ export default class DraftedPlayers extends React.Component {
           {/* ========= RESET BUTTON ========= */}
           <button className='button2' onClick={() => this.props.reset()}>Reset</button>
           {/* =======SAVE TEAM FEATURE ========= */}
-<<<<<<< Updated upstream
-          <button className='button3' onClick={() => this.props.save()}>Save Team & End Draft</button>
-=======
           <button className='button3' onClick={(team) => this.props.save(this.props.team)}>Save Team & End Draft</button>
->>>>>>> Stashed changes
         </div>
         <div className='padding-table draft'>
           <NFLTable
             fields={['Name', 'Pos', 'Bye']}
             players={this.props.players}
             disableColor={true}
-<<<<<<< Updated upstream
-            onClick={(p) => this.props.Team(p)}
-=======
             onClick={(draftedPlayers) => this.props.save(draftedPlayers)}
->>>>>>> Stashed changes
           />
         </div>
       </div>

@@ -60,9 +60,9 @@ export const resetDraftSuccess = () => ({
 }) 
 
 export const SAVE_TEAM_SUCCESS = 'SAVE_TEAM_SUCCESS';
-export const saveTeamSuccess = (player) => ({
+export const saveTeamSuccess = (team) => ({
     type: SAVE_TEAM_SUCCESS,
-    player
+    team
 })
 
 
@@ -100,9 +100,6 @@ export const reset = (dispatch) => {
     console.log('Reset Board')
         .then(() => dispatch(resetDraftSuccess()))
 }
-<<<<<<< Updated upstream
-export const save = (player) => (dispatch) => {
-=======
 export const save = (team) => (dispatch, getState) => {
     const authToken = getState().auth.googleID;
     console.log(authToken);
@@ -116,7 +113,6 @@ export const save = (team) => (dispatch, getState) => {
         }
     })
         .then((res) => res.json)
->>>>>>> Stashed changes
     console.log("Save Team")
     .then(() => dispatch(saveTeamSuccess()))
 }

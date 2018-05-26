@@ -9,6 +9,8 @@ export function LandingPage(props) {
     if (props.loggedIn) {
         return <Redirect to="/dashboard" />;
     }
+    // Prod  redirect
+    // href="https://armchair-gm.herokuapp.com/api/auth/google"
 
     return (
         
@@ -21,11 +23,7 @@ export function LandingPage(props) {
             <br></br>
                 <div class="login">
             {/* <p>Win your League this Year!</p> */}
-<<<<<<< Updated upstream
-                <a href="https://armchair-gm.herokuapp.com/api/auth/google"> <img type='button' value='login' src={google} className='input-button btn btn-success login-button'/></a>
-=======
                 <a href={`${API_BASE_URL}/auth/google`}> <img type='button' value='login' src={google} className='input-button btn btn-success login-button'/></a>
->>>>>>> Stashed changes
             </div>
         </div>
             

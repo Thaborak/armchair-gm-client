@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import NFLTable from './NFLTable'
 
 export class AvailablePlayers extends React.Component {
+  // takes players from NFL Table and sorts them if undrafted
   render() {
    let players
     if (this.props.players) {
