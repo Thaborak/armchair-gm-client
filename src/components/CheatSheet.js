@@ -3,14 +3,20 @@ import React, { Component } from 'react';
 import BestAvailablePlayers from './BestAvailablePlayers'
 import BestAvailablePlayersByPosition from './BestAvailablePlayersByPosition'
 import DraftedPlayers from './DraftedPlayers'
-import { addPlayer } from './redux/actions/team'
+// import { addPlayer } from './redux/actions/team'
 import { connect } from 'react-redux';
+<<<<<<< Updated upstream
 import { fetchPlayers, fetchPlayersRequest, searchPlayerSuccess, draftPlayerSuccess, undoPlayerSuccess, reset, save, filterPlayerSuccess, resetDraftSuccess, saveTeamSuccess } from './redux/actions/data'
+=======
+import { fetchPlayers, fetchPlayersRequest, searchPlayerSuccess, draftPlayerSuccess, undoPlayerSuccess, reset, save, filterPlayerSuccess, resetDraftSuccess, saveTeamSuccess, addPlayer } from './redux/actions/data'
+import { fetchUser, logoutUser } from './redux/actions/auth';
+>>>>>>> Stashed changes
 import Spinner from 'react-spinkit';
 import AvailablePlayers from './AvailablePlayers';
 import NFLTable from './NFLTable'
 export class CheatSheet extends React.Component {
   componentDidMount() {
+<<<<<<< Updated upstream
     this.props.dispatch(fetchPlayers());
     console.log(`%c
 
@@ -27,6 +33,12 @@ export class CheatSheet extends React.Component {
                                                                                                            `, "font-family:monospace");
 
 console.log("%chttps://www.linkedin.com/in/tom-h-759579a5", "color: blue; font-size: x-large");
+=======
+    console.log(this.props);
+    this.props.dispatch(fetchPlayers());
+    this.props.dispatch(fetchUser());
+
+>>>>>>> Stashed changes
   }
   render() {
     if (this.props.loading) {
@@ -57,7 +69,11 @@ console.log("%chttps://www.linkedin.com/in/tom-h-759579a5", "color: blue; font-s
           players={this.props.draftedPlayers}
           undo={(currentDraft) => this.props.dispatch(undoPlayerSuccess(currentDraft))}
           reset={() => this.props.dispatch(resetDraftSuccess())}
+<<<<<<< Updated upstream
           save={(team) => this.props.dispatch(saveTeamSuccess(team))}
+=======
+          save={(players) => this.props.dispatch(addPlayer(players))}
+>>>>>>> Stashed changes
         />
       </div>
     );

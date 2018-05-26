@@ -45,6 +45,7 @@ export const draftReducer = (state = initialState, action) => {
             player: action.player.drafted = state.currentDraft + 1,
             query: '',
 
+<<<<<<< Updated upstream
         }); 
     } else if (action.type === UNDO_DRAFT_SUCCESS) {
         if (state.draftedPlayers.length === 0) {
@@ -76,6 +77,39 @@ export const draftReducer = (state = initialState, action) => {
         return Object.assign({}, state, {
             team: [...state.draftedPlayers, action.player] 
         })
+=======
+            });
+        case UNDO_DRAFT_SUCCESS:
+            if (state.draftedPlayers.length === 0) {
+                alert('Nothing to Undo');
+                return state;
+            }
+            const isDrafted = state.players.findIndex(players => players.drafted === state.currentDraft)
+            return Object.assign({}, state, {
+                currentDraft: state.currentDraft - 1,
+                player: state.players[isDrafted].drafted = null,
+                draftedPlayers: [...state.draftedPlayers.slice(0, state.currentDraft - 1), ...state.draftedPlayers.slice(state.currentDraft, + 1)],
+                fetchError: null
+            });
+        case RESET_DRAFT_SUCCESS:
+            if (state.draftedPlayers.length === 0) {
+                alert('Nothing to Reset');
+                return state;
+            }
+            const isDraftedReset = state.players.filter(players => players.drafted !== null)
+            return Object.assign({}, state, {
+                currentDraft: state.currentDraft = 0,
+                player: isDraftedReset.forEach(function (player) {
+                    player.drafted = null
+                }),
+                draftedPlayers: state.draftedPlayers = [],
+                fetchError: null
+            });
+        case SAVE_TEAM_SUCCESS:
+            return Object.assign({}, state, {
+                team: [...state.team, action.team]
+            })
+>>>>>>> Stashed changes
     }
     return state;
 }

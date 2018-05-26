@@ -29,6 +29,7 @@ export const logoutUserSuccess = function () {
 
 // GET request for user info from DB with GoogleID and their Fantasy
 export const fetchUser = function () {
+<<<<<<< Updated upstream
     return function (dispatch) {
         const token = get('accessToken');
         const headers = new Headers({
@@ -43,6 +44,24 @@ export const fetchUser = function () {
             }
             return response.json();
         })
+=======
+    return function (dispatch, getState) {
+        const url = `${API_BASE_URL}/user`;
+        const token = Cookies.get('accessToken');
+        const headers = new Headers({
+            Authorization: 'bearer ' + token
+        });
+        return fetch(url,
+            {headers: headers})
+            .then(function (response) {
+                if (response.status < 200 || response.status >= 300) {
+                    const error = new Error(response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+                return response.json();
+            })
+>>>>>>> Stashed changes
             .then(function (user) {
                 return dispatch(
                     fetchUserSuccess(user)
