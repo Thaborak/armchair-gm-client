@@ -3,6 +3,7 @@ import update from "react-addons-update";
 
 const initialState = {
     googleID: null,
+    team: []
 };
 
 export const authReducer = function (state = initialState, action) {
@@ -11,7 +12,8 @@ export const authReducer = function (state = initialState, action) {
         case FETCH_USER_SUCCESS:
             const user = action.user;
             const newState = Object.assign({}, state, {
-                googleID: user.googleID
+                googleID: user.googleID,
+                team: user.team
             });
             return newState;
 

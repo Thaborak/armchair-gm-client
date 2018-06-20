@@ -30,7 +30,7 @@ export default class DraftedPlayers extends React.Component {
             fields={['Name', 'Pos', 'Bye']}
             players={this.props.players}
             disableColor={true}
-            onClick={(draftedPlayers) => this.props.save(draftedPlayers)}
+            onClick={(draftedPlayers) => this.props.save(this.props.team)}
           />
         </div>
       </div>

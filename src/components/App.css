@@ -1,37 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
-* {
-    box-sizing: border-box;
-}
 
-html {
-    width: 100%;
-    height: 100%;
+/* body {
+    margin: 0
 }
-
-body {
+.home {
     background-image: url('https://i1.wp.com/accjfl.com/wp-content/uploads/2017/08/American-football-ball-cool-wallpapers-wallpaper-desktop-images-background-photos-download-hd-free-iphone-mac-3614x2708.jpg?ssl=1');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
-}
+    height: 100vh;
 
-#main {
-    min-height: 100vh;
 }
 
 .header {
-    margin-top: 10%;
-    margin-left: 30%;
+    display: inline-block;
+    margin:auto;
+    padding-top: 10vh;
+    padding-left: 35vw;
 }
 
 .header div {
-    float: left;
     color: #fff;
     font-family: 'Exo', sans-serif;
     font-size: 35px;
@@ -45,8 +35,8 @@ body {
 }
 
 .input-button {
-    padding-left: 35%;
-}
+    padding-left: 3vw;
+} */
 
 /*  ===========Cheat Sheet================ */
 
@@ -72,7 +62,7 @@ table {
     border-color: grey;
 }
 
-.table.table-striped tbody>tr:nth-child(odd) td {
+tbody>tr:nth-child(odd) td {
     background-color: lightgray;
 }
 
@@ -80,6 +70,14 @@ tbody>tr:hover>td {
     background-color: #e2e2e2
 }
 
+tbody :hover {
+    background-color: white;
+    color: blue;
+    outline: 0
+} 
+
+
+/* 
 tbody {
     display: table-row-group;
     vertical-align: middle;
@@ -88,13 +86,9 @@ tbody {
     padding-bottom: 10px;
 }
 
-tbody :hover {
-    background-color: white;
-    color: blue;
-    outline: 0
-}
 
-tr {
+
+/* tr {
     border: 1px solid black;
     display: table-row;
 }
@@ -234,4 +228,4 @@ button {
 
 .tier2 {
     font-style: italic;
-}
+} */

@@ -7,24 +7,20 @@ import NFLTable from './NFLTable'
 export class AvailablePlayers extends React.Component {
   // takes players from NFL Table and sorts them if undrafted
   render() {
-   let players
+    let players
     if (this.props.players) {
-       players = this.props.players.slice().filter(players => !players.drafted);
+      players = this.props.players.slice().filter(players => !players.drafted);
       if (this.props.Pos) {
-       players = players.filter(p => p.Pos.includes(this.props.Pos));
+        players = players.filter(p => p.Pos.includes(this.props.Pos));
       }
     }
-  
- 
-
-    
     return (
-      <NFLTable
-        size={this.props.size}
-        fields={this.props.fields}
-        players={players}
-        onClick={(p) => this.props.draft(p)}
-      />
+              <NFLTable
+                size={this.props.size}
+                fields={['Rank', 'Tier', 'Pos', 'Name', 'Bye']}
+                players={this.props.players}
+                draft={(player) => this.props.draft(player)}
+              />
     );
   }
 }

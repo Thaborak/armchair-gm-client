@@ -1,4 +1,4 @@
-import { FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS, FETCH_PLAYERS_ERROR, FILTER_PLAYERS_SUCCESS, SEARCH_PLAYERS_SUCCESS, UNDO_DRAFT_SUCCESS, DRAFT_PLAYER_SUCCESS, RESET_DRAFT_SUCCESS, SAVE_TEAM_SUCCESS, } from '../actions/data';
+import { FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS, FETCH_PLAYERS_ERROR, FILTER_PLAYERS_SUCCESS, SEARCH_PLAYERS_SUCCESS, UNDO_DRAFT_SUCCESS, DRAFT_PLAYER_SUCCESS, RESET_DRAFT_SUCCESS, SAVE_TEAM_SUCCESS, GET_TEAM_SUCCESS, } from '../actions/data';
 
 const initialState = {
     players: [],
@@ -77,7 +77,7 @@ export const draftReducer = (state = initialState, action) => {
         case SAVE_TEAM_SUCCESS:
             return Object.assign({}, state, {
                 team: [...state.team, action.team]
-            })
+            });
     }
     return state;
 };

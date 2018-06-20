@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import LandingPage from './landing-page';
-import CheatSheet from './CheatSheet'
+import CheatSheet from './CheatSheet';
+import Dashboard from './Dashboard';
 import { connect } from 'react-redux';
 import './App.css'
 
@@ -12,7 +13,8 @@ export class App extends React.Component {
     return (
       <div id="main" className="app">
         <Route exact path='/' component={LandingPage} />
-        <Route exact path ="/dashboard" component={CheatSheet} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path ="/draft" component={CheatSheet} />
       </div>
     );
   }
