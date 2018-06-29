@@ -15,8 +15,7 @@ export default class DraftedPlayers extends React.Component {
     console.log(this.props);
 
     return (
-      <div className='column4'>
-        <div className='PositionTitle'>Draft History</div>
+      <div className='col-md-4'>
         <div className='buttons'>
           {/* ======UNDO Button =====  */}
           <button className='button1' onClick={() => this.props.undo()}>Undo</button>
@@ -32,8 +31,8 @@ export default class DraftedPlayers extends React.Component {
             disableColor={true}
             onClick={(draftedPlayers) => this.props.save(this.props.team)}
           />
-        </div>
-      </div>
+         </div>
+       </div>
     );
   }
 }

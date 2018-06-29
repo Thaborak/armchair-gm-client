@@ -18,8 +18,8 @@ export class AvailablePlayers extends React.Component {
               <NFLTable
                 size={this.props.size}
                 fields={['Rank', 'Tier', 'Pos', 'Name', 'Bye']}
-                players={this.props.players}
-                draft={(player) => this.props.draft(player)}
+                players={players}
+                draft={(p) => this.props.draft(p)}
               />
     );
   }

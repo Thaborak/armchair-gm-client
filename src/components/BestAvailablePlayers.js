@@ -9,10 +9,10 @@ export default class BestAvailablePlayers extends React.Component {
     return (
       <div>
         <div className='column1'>
-          <div className='PositionTitle'>Best Available</div>
           <div className='search'>
             <input
-              className='searchbar'
+              className='form-control mr-sm-2'
+              aria-label="Search"
               type="text"
               placeholder="Search By Player ex: 'Todd Gurley'"
               onChange={this.props.search}
@@ -26,6 +26,7 @@ export default class BestAvailablePlayers extends React.Component {
                 fields={['Rank', 'Tier', 'Pos', 'Name', 'Bye']}
                 players={this.props.players}
                 draft={(player) => this.props.draft(player)}
+                size={35}
               />
             </div>
           </div>
