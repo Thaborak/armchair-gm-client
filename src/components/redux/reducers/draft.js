@@ -76,7 +76,8 @@ export const draftReducer = (state = initialState, action) => {
             });
         case SAVE_TEAM_SUCCESS:
             return Object.assign({}, state, {
-                team: [...state.team, action.team]
+                team: [...state.team, action.team],
+                player: action.team.pick = true,
             });
     }
     return state;

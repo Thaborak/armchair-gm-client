@@ -45,57 +45,47 @@ export class CheatSheet extends React.Component {
             />
           </div>
 
-
-
-          {/* <div class="col-md-4">
-            <h2 className='PositionTitle'>Best by Position</h2>
-              <BestAvailablePlayersByPosition
-                players={this.props.players}
-                draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
-              />
-          </div> */}
-          
           <div className='col-md-3 '>
             <div className='padding-table'>
-            <span>Runningbacks</span>
-            <AvailablePlayers
-              fields={['Tier', 'Name', 'Bye']}
-              players={this.props.players}
-              draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
-              size={15}
-              Pos='RB'
-            />
-        
-            <span>Wide Receivers</span>
-            <AvailablePlayers
-              fields={['Tier', 'Name', 'Bye']}
-              players={this.props.players}
-              draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
-              size={15}
-              Pos='WR'
-            />
+              <h3>Runningbacks</h3>
+              <AvailablePlayers
+                fields={['Tier', 'Name', 'Bye']}
+                players={this.props.players}
+                draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
+                size={19}
+                Pos='RB'
+              />
+
+              <h3>Wide Receivers</h3>
+              <AvailablePlayers
+                fields={['Tier', 'Name', 'Bye']}
+                players={this.props.players}
+                draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
+                size={19}
+                Pos='WR'
+              />
+            </div>
           </div>
-          </div>
-          
+
           <div className='col-md-3'>
             <div className='padding-table'>
-            <span>Quarterbacks</span>
-            <AvailablePlayers
-              fields={['Tier', 'Name', 'Bye']}
-              players={this.props.players}
-              draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
-              size={15}
-              Pos='QB'
-            />
-            <span>Tightends</span>
-            <AvailablePlayers
-              fields={['Tier', 'Name', 'Bye']}
-              players={this.props.players}
-              draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
-              size={15}
-              Pos='TE'
-            />
-          </div>
+              <h3>Quarterbacks</h3>
+              <AvailablePlayers
+                fields={['Tier', 'Name', 'Bye']}
+                players={this.props.players}
+                draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
+                size={19}
+                Pos='QB'
+              />
+              <h3>Tightends</h3>
+              <AvailablePlayers
+                fields={['Tier', 'Name', 'Bye']}
+                players={this.props.players}
+                draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
+                size={19}
+                Pos='TE'
+              />
+            </div>
           </div>
           <div class="col-md-3">
             <h2 className='PositionTitle'>Draft History</h2>

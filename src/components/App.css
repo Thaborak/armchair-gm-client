@@ -76,6 +76,10 @@ tbody :hover {
     outline: 0
 } 
 
+.selected {
+    color: red;
+}
+
 
 /* 
 tbody {

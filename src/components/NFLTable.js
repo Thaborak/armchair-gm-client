@@ -16,15 +16,35 @@ export default class NFLTable extends React.Component {
       return
     }
 
-    return players.map((player, i) => {
-      return (
-        <tr key={i} 
-          className={('tier'+player.Tier)}
-          onClick={() => this.onClick(player)}>
-          {this.columns(player)}
-        </tr>
-      )
-    });
+
+
+
+    // console.log(this.props.players);
+
+    for (let i = 0; i < this.props.players.length; i++) {
+      const element = this.props.players[i];
+      if (element.pick === true) {
+        console.log(element);
+        return players.map((player, i) => {
+          return (
+            <tr key={i}
+              className={('selected ' + 'tier' + player.Tier)}
+              onClick={() => this.onClick(player)}>
+              {this.columns(player)}
+            </tr>
+          )
+        });
+      }
+      return players.map((player, i) => {
+        return (
+          <tr key={i}
+            className={('tier' + player.Tier)}
+            onClick={() => this.onClick(player)}>
+            {this.columns(player)}
+          </tr>
+        )
+      });
+    }
   }
 
   onClick(player) {
@@ -34,7 +54,7 @@ export default class NFLTable extends React.Component {
   }
 
   columns(player) {
-    
+
     return this.props.fields.map((f, i) => {
       if (f === 'Tier') {
         return <td key={i}>Tier {player[f]}</td>
@@ -46,8 +66,8 @@ export default class NFLTable extends React.Component {
 
   render() {
     return (
-      <table className='table-bordered table-striped player-table table-hover pad-below tablesorter'>
-        <tbody className="pointer">{this.rows()}</tbody>
+      <table>
+        <tbody className="">{this.rows()}</tbody>
       </table>
     );
   }

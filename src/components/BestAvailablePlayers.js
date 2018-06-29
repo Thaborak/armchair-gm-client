@@ -14,7 +14,7 @@ export default class BestAvailablePlayers extends React.Component {
               className='form-control mr-sm-2'
               aria-label="Search"
               type="text"
-              placeholder="Search By Player ex: 'Todd Gurley'"
+              placeholder="Search By Player"
               onChange={this.props.search}
               value={this.props.query}
             />

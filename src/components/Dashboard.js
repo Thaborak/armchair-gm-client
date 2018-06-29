@@ -10,69 +10,42 @@ import { fetchUser, logoutUser } from './redux/actions/auth';
 
 export class Dashboard extends React.Component {
 
-    componentWillMount() {
-        console.log(this.props);
-        this.props.dispatch(fetchPlayers());
-        this.props.dispatch(fetchUser());
+    componentDidMount() {
+        this.props.dispatch(fetchPlayers())
+        this.props.dispatch(fetchUser())
     }
-  
+
+
     render() {
-        var ctx = "myChart";
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                datasets: [{
-                    data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                    lineTension: 0,
-                    backgroundColor: 'transparent',
-                    borderColor: '#007bff',
-                    borderWidth: 4,
-                    pointBackgroundColor: '#007bff'
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: false
-                        }
-                    }]
-                },
-                legend: {
-                    display: false,
-                }
-            }
-        });
-        return (
+            return (
 
-            <div>  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-                <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ArmChair-GM Fantasy Football</a>
-                <ul class="navbar-nav px-3">
-                    <li class="nav-item text-nowrap">
-                        <a class="nav-link" href="#">Sign out</a>
-                    </li>
-                </ul>
-            </nav>
-                <div class="container-fluid">
+                <div>  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+                    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ArmChair-GM Fantasy Football</a>
+                    <ul class="navbar-nav px-3">
+                        <li class="nav-item text-nowrap">
+                            <a class="nav-link" href="#">Sign out</a>
+                        </li>
+                    </ul>
+                </nav>
+                    <div class="container-fluid">
 
-                    <div class="row">
-                        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                            <div class="sidebar-sticky">
-                                <ul class="nav flex-column">
-                                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                        <span>Draft Tools</span>
-                                        <a class="d-flex align-items-center text-muted" href="#">
-                                            <span data-feather="plus-circle"></span>
-                                        </a>
-                                    </h6>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/draft#">
-                                            <span data-feather="file"></span>
-                                            Draft Cheatsheet
+                        <div class="row">
+                            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                                <div class="sidebar-sticky">
+                                    <ul class="nav flex-column">
+                                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                            <span>Draft Tools</span>
+                                            <a class="d-flex align-items-center text-muted" href="#">
+                                                <span data-feather="plus-circle"></span>
+                                            </a>
+                                        </h6>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/draft#">
+                                                <span data-feather="file"></span>
+                                                Draft Cheatsheet
                 </a>
-                                    </li>
-                                    {/* <li class="nav-item">
+                                        </li>
+                                        {/* <li class="nav-item">
                                     <a class="nav-link" href="#">
                                         <span data-feather="shopping-cart"></span>
                                         Products
@@ -96,15 +69,15 @@ export class Dashboard extends React.Component {
                                         Integrations
                 </a>
                                 </li> */}
-                                </ul>
+                                    </ul>
 
-                                {/* <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                    {/* <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                 <span>Saved reports</span>
                                 <a class="d-flex align-items-center text-muted" href="#">
                                     <span data-feather="plus-circle"></span>
                                 </a>
                             </h6> */}
-                                {/* <ul class="nav flex-column mb-2">
+                                    {/* <ul class="nav flex-column mb-2">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
                                         <span data-feather="file-text"></span>
@@ -130,29 +103,29 @@ export class Dashboard extends React.Component {
                 </a>
                                 </li>
                             </ul> */}
-                            </div>
-                        </nav>
-
-                        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                                <h1 class="h2">Dashboard</h1>
-                                <div class="btn-toolbar mb-2 mb-md-0">
-                                    <div class="btn-group mr-2">
-                                        <button class="btn btn-sm btn-outline-secondary">Share</button>
-                                        <button class="btn btn-sm btn-outline-secondary">Export</button>
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                                        <span data-feather="calendar"></span>
-                                        This week
-              </button>
                                 </div>
-                            </div>
+                            </nav>
 
-                            {/* <canvas class="my-4 w-100" id={NFLTable} width="900" height="380"></canvas> */}
+                            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                    <h1 class="h2">Dashboard</h1>
+                                    <div class="btn-toolbar mb-2 mb-md-0">
+                                        <div class="btn-group mr-2">
+                                            <button class="btn btn-sm btn-outline-secondary">Share</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Export</button>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                                            <span data-feather="calendar"></span>
+                                            This week
+              </button>
+                                    </div>
+                                </div>
 
-                            <h2>My Team</h2>
-                            <div class="table-responsive">
-                                {/* <table class="table table-striped table-sm"> */}
+                                {/* <canvas class="my-4 w-100" id={NFLTable} width="900" height="380"></canvas> */}
+
+                                <h2>My Team</h2>
+                                <div class="table-responsive">
+                                    {/* <table class="table table-striped table-sm"> */}
                                     <NFLTable
                                         players={this.props.team}
                                         onClick={(player) => this.props.dispatch(draft(player))}
@@ -161,13 +134,14 @@ export class Dashboard extends React.Component {
                                         query={this.props.query}
                                         fields={['Rank', 'Tier', 'Pos', 'Name', 'Bye']}
                                     />
-                                {/* </table> */}
-                            </div>
-                        </main>
+                                    {/* </table> */}
+                                </div>
+                            </main>
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+
     }
 }
 

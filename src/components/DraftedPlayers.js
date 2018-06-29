@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NFLTable from './NFLTable'
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 
 
 export default class DraftedPlayers extends React.Component {
@@ -12,27 +13,28 @@ export default class DraftedPlayers extends React.Component {
       let players = this.props.players.slice().filter(players => this.props.players.drafted);
       players = players.sort((a, b) => b.drafted - a.drafted);
     }
-    console.log(this.props);
 
+console.log(this.props)
     return (
-      <div className='col-md-4'>
-        <div className='buttons'>
+      <div>
+        <div className='buttons draft'>
           {/* ======UNDO Button =====  */}
           <button className='button1' onClick={() => this.props.undo()}>Undo</button>
           {/* ========= RESET BUTTON ========= */}
           <button className='button2' onClick={() => this.props.reset()}>Reset</button>
           {/* =======SAVE TEAM FEATURE ========= */}
-          <button className='button3' onClick={(team) => this.props.save(this.props.team)}>Save Team & End Draft</button>
+          <button className='button3' onClick={(DraftedPlayers) => this.props.save(DraftedPlayers)}>Save Team & End Draft<a href='./dashboard'></a></button>
         </div>
         <div className='padding-table draft'>
           <NFLTable
             fields={['Name', 'Pos', 'Bye']}
             players={this.props.players}
+            // className={this.props.players.pick === true ? 'selected' + ('tier' + player.Tier) : ('tier' + player.Tier)} 
             disableColor={true}
-            onClick={(draftedPlayers) => this.props.save(this.props.team)}
+            onClick={(DraftedPlayers) => this.props.save(DraftedPlayers)}
           />
-         </div>
-       </div>
+        </div>
+      </div>
     );
   }
 }
