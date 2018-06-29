@@ -6,9 +6,8 @@ import { fetchPlayers, searchPlayerSuccess, draftPlayerSuccess, undoPlayerSucces
 import { fetchUser, logoutUser } from './redux/actions/auth';
 import Spinner from 'react-spinkit';
 import BestAvailablePlayers from './BestAvailablePlayers';
-import BestAvailablePlayersByPosition from './BestAvailablePlayersByPosition';
+import AvailablePlayers from './AvailablePlayers'
 import DraftedPlayers from './DraftedPlayers';
-import NFLTable from './NFLTable'
 import './CheatSheet.css';
 
 export class CheatSheet extends React.Component {
@@ -35,7 +34,7 @@ export class CheatSheet extends React.Component {
         <p class="lead">Click on each player to draft them as along side your live draft</p>
         <div class="row">
           {/* cheatSheet table table-bordered table-striped player-table table-hover pad-below tablesorter" */}
-          <div class="col-md-4">
+          <div class="col-md-3">
             <h2 className='PositionTitle'>Best Available</h2>
             <BestAvailablePlayers
               players={this.props.filteredPlayers}
@@ -48,14 +47,57 @@ export class CheatSheet extends React.Component {
 
 
 
-          <div class="col-md-4">
+          {/* <div class="col-md-4">
             <h2 className='PositionTitle'>Best by Position</h2>
               <BestAvailablePlayersByPosition
                 players={this.props.players}
                 draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
               />
+          </div> */}
+          
+          <div className='col-md-3 '>
+            <div className='padding-table'>
+            <span>Runningbacks</span>
+            <AvailablePlayers
+              fields={['Tier', 'Name', 'Bye']}
+              players={this.props.players}
+              draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
+              size={15}
+              Pos='RB'
+            />
+        
+            <span>Wide Receivers</span>
+            <AvailablePlayers
+              fields={['Tier', 'Name', 'Bye']}
+              players={this.props.players}
+              draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
+              size={15}
+              Pos='WR'
+            />
           </div>
-          <div class="col-md-4">
+          </div>
+          
+          <div className='col-md-3'>
+            <div className='padding-table'>
+            <span>Quarterbacks</span>
+            <AvailablePlayers
+              fields={['Tier', 'Name', 'Bye']}
+              players={this.props.players}
+              draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
+              size={15}
+              Pos='QB'
+            />
+            <span>Tightends</span>
+            <AvailablePlayers
+              fields={['Tier', 'Name', 'Bye']}
+              players={this.props.players}
+              draft={(player) => this.props.dispatch(draftPlayerSuccess(player))}
+              size={15}
+              Pos='TE'
+            />
+          </div>
+          </div>
+          <div class="col-md-3">
             <h2 className='PositionTitle'>Draft History</h2>
             <DraftedPlayers
               currentDraft={this.props.currentDraft}

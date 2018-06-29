@@ -19,7 +19,7 @@ export class AvailablePlayers extends React.Component {
                 size={this.props.size}
                 fields={['Rank', 'Tier', 'Pos', 'Name', 'Bye']}
                 players={players}
-                draft={(p) => this.props.draft(p)}
+                onClick={(p) => this.props.draft(p)}
               />
     );
   }
