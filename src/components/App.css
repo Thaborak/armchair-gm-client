@@ -76,7 +76,7 @@ tbody :hover {
     outline: 0
 } 
 
-.selected {
+.true {
     color: red;
 }
 

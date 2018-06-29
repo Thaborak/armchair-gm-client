@@ -23,54 +23,51 @@ export default class NFLTable extends React.Component {
 
     for (let i = 0; i < this.props.players.length; i++) {
       const element = this.props.players[i];
-      if (element.pick === true) {
-        console.log(element);
-        return players.map((player, i) => {
+      return players.map((player, i) => {
+        if (element.pick === true) {
           return (
             <tr key={i}
-              className={('selected ' + 'tier' + player.Tier)}
+              className={(player.pick + ' tier' + player.Tier)}
               onClick={() => this.onClick(player)}>
-              {this.columns(player)}
+              {this.columns(player, true)}
             </tr>
           )
-        });
-      }
-      return players.map((player, i) => {
+        } else {
         return (
           <tr key={i}
             className={('tier' + player.Tier)}
             onClick={() => this.onClick(player)}>
-            {this.columns(player)}
+            {this.columns(player, false)}
           </tr>
         )
-      });
-    }
-  }
-
-  onClick(player) {
-    if (this.props.onClick) {
-      return this.props.onClick(player);
-    }
-  }
-
-  columns(player) {
-
-    return this.props.fields.map((f, i) => {
-      if (f === 'Tier') {
-        return <td key={i}>Tier {player[f]}</td>
-      } else {
-        return <td key={i}>{player[f]}</td>
       }
     });
   }
+}
 
-  render() {
-    return (
-      <table>
-        <tbody className="">{this.rows()}</tbody>
-      </table>
-    );
+onClick(player) {
+  if (this.props.onClick) {
+    return this.props.onClick(player);
   }
+}
+
+columns(player) {
+  return this.props.fields.map((f, i) => {
+    if (f === 'Tier') {
+      return <td key={i}>Tier {player[f]}</td>
+    } else {
+      return <td key={i}>{player[f]}</td>
+    }
+  });
+}
+
+render() {
+  return (
+    <table>
+      <tbody className="">{this.rows()}</tbody>
+    </table>
+  );
+}
 }
 
 
