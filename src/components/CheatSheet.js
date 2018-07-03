@@ -2,8 +2,8 @@ import React from 'react';
 
 // import { addPlayer } from './redux/actions/team'
 import { connect } from 'react-redux';
-import { fetchPlayers, searchPlayerSuccess, draftPlayerSuccess, undoPlayerSuccess, reset, save, filterPlayerSuccess, resetDraftSuccess, saveTeamSuccess, addPlayer, undo, draft } from './redux/actions/data'
-import { fetchUser, logoutUser } from './redux/actions/auth';
+import { fetchPlayers, searchPlayerSuccess, draftPlayerSuccess, undoPlayerSuccess, save, resetDraftSuccess, addPlayer } from './redux/actions/data'
+import { fetchUser } from './redux/actions/auth';
 import Spinner from 'react-spinkit';
 import BestAvailablePlayers from './BestAvailablePlayers';
 import AvailablePlayers from './AvailablePlayers'

@@ -173,3 +173,4 @@ export const removePlayer = function (props) {
             });
     };
 };
+
