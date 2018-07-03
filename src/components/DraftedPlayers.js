@@ -23,7 +23,7 @@ console.log(this.props)
           {/* ========= RESET BUTTON ========= */}
           <button className='button2' onClick={() => this.props.reset()}>Reset</button>
           {/* =======SAVE TEAM FEATURE ========= */}
-          <button className='button3' onClick={(DraftedPlayers) => this.props.save(DraftedPlayers)}>Save Team & End Draft<a href='./dashboard'></a></button>
+          <button className='button3' onClick={(team) => this.props.addPlayer(team)}><a href='/dashboard'>Save Team & End Draft</a></button>
         </div>
         <div className='padding-table draft'>
           <NFLTable

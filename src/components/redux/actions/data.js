@@ -65,6 +65,12 @@ export const saveTeamSuccess = (team) => ({
     team
 })
 
+export const END_DRAFT_SUCCESS = 'END_DRAFT_SUCCESS';
+export const endDraftSuccess = (team) => ({
+    type: END_DRAFT_SUCCESS,
+    team
+})
+
 
 export const fetchPlayers = () => (dispatch, getState) => {
   dispatch(fetchPlayersRequest())
@@ -100,33 +106,20 @@ export const reset = (dispatch) => {
     console.log('Reset Board')
         .then(() => dispatch(resetDraftSuccess()))
 }
-export const save = (team) => (dispatch, getState) => {
-    const authToken = getState().auth.googleID;
-    console.log(authToken);
-    return fetch(`${API_BASE_URL}/user/team`, {
-        method: 'PUT',
-        body: JSON.stringify(team),
-        headers: {
-            // Provide our auth token as credentials
-            Authorization: `Bearer ${authToken}`,
-            'Content-Type': 'application/json'
-        }
-    })
-        .then((res) => res.json)
+export const save = (team) => (dispatch) => {
     console.log("Save Team")
-    .then(() => dispatch(saveTeamSuccess()))
+    dispatch(saveTeamSuccess(team))
 }
 // PUT request to add player into user schema 
 export const addPlayer = function (team) {
     return function (dispatch, getState) {
         const token = Cookies.get('accessToken');
         const googleID = getState().auth.googleID;
-        const ok = getState().draft.team;
-        console.log(ok);
-        const url = `${API_BASE_URL}/user/${googleID}`;
+        const url = `${API_BASE_URL}/user/${googleID}`;      
+        dispatch(endDraftSuccess(team));
         return fetch(url,
             {
-                method: 'PUT',
+                method: 'POST',
                 headers: { 'Content-type': 'application/json', 'Authorization': 'bearer ' + token },
                 body: JSON.stringify({team})
             }
@@ -138,11 +131,6 @@ export const addPlayer = function (team) {
             }
             return response.json();
         })
-            .then(function (response) {
-                return dispatch(
-                    saveTeamSuccess(team)
-                );
-            })
             .catch(function (error) {
                 return dispatch(
                     fetchUserError(error)

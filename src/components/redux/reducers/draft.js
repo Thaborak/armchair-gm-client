@@ -1,4 +1,4 @@
-import { FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS, FETCH_PLAYERS_ERROR, FILTER_PLAYERS_SUCCESS, SEARCH_PLAYERS_SUCCESS, UNDO_DRAFT_SUCCESS, DRAFT_PLAYER_SUCCESS, RESET_DRAFT_SUCCESS, SAVE_TEAM_SUCCESS, GET_TEAM_SUCCESS, } from '../actions/data';
+import { FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS, FETCH_PLAYERS_ERROR, SEARCH_PLAYERS_SUCCESS, UNDO_DRAFT_SUCCESS, DRAFT_PLAYER_SUCCESS, RESET_DRAFT_SUCCESS, SAVE_TEAM_SUCCESS, END_DRAFT_SUCCESS, } from '../actions/data';
 
 const initialState = {
     players: [],
@@ -58,7 +58,7 @@ export const draftReducer = (state = initialState, action) => {
                 currentDraft: state.currentDraft - 1,
                 player: isDrafted.forEach(function (player) {
                     player.drafted = null,
-                    player.pick = null
+                        player.pick = null
                 }),
                 team: state.team.filter(players => players.drafted !== null),
                 draftedPlayers: [...state.draftedPlayers.slice(0, state.currentDraft - 1), ...state.draftedPlayers.slice(state.currentDraft, + 1)],
@@ -74,7 +74,7 @@ export const draftReducer = (state = initialState, action) => {
                 currentDraft: state.currentDraft = 0,
                 player: isDraftedReset.forEach(function (player) {
                     player.drafted = null,
-                    player.pick = null
+                        player.pick = null
                 }),
                 team: [],
                 draftedPlayers: state.draftedPlayers = [],
@@ -84,6 +84,14 @@ export const draftReducer = (state = initialState, action) => {
             return Object.assign({}, state, {
                 team: [...state.team, action.team],
                 player: action.team.pick = true,
+            });
+        case END_DRAFT_SUCCESS:
+            const endDraft = state.players.filter(players => players.drafted !== null)
+            return Object.assign({}, state, {
+                player: endDraft.forEach(function (player) {
+                    player.drafted = null,
+                        player.pick = null
+                }),
             });
     }
     return state;

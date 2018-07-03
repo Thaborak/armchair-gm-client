@@ -94,7 +94,9 @@ export class CheatSheet extends React.Component {
               players={this.props.draftedPlayers}
               undo={(currentDraft) => this.props.dispatch(undoPlayerSuccess(currentDraft))}
               reset={() => this.props.dispatch(resetDraftSuccess())}
-              save={(players) => this.props.dispatch(addPlayer(players))}
+              save={(players) => this.props.dispatch(save(players))}
+              team={this.props.team}
+              addPlayer={() => this.props.dispatch(addPlayer(this.props.team))}
             />
           </div>
         </div>
