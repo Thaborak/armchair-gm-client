@@ -22,9 +22,7 @@ export default class NFLTable extends React.Component {
     // console.log(this.props.players);
 
     for (let i = 0; i < this.props.players.length; i++) {
-      const element = this.props.players[i];
       return players.map((player, i) => {
-        if (element.pick === true) {
           return (
             <tr key={i}
               className={(player.pick + ' tier' + player.Tier)}
@@ -32,15 +30,6 @@ export default class NFLTable extends React.Component {
               {this.columns(player, true)}
             </tr>
           )
-        } else {
-        return (
-          <tr key={i}
-            className={('tier' + player.Tier)}
-            onClick={() => this.onClick(player)}>
-            {this.columns(player, false)}
-          </tr>
-        )
-      }
     });
   }
 }

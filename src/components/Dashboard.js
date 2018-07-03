@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Dashboard.css';
-import Chart from 'chart.js';
 import NFLTable from './NFLTable';
 import { fetchPlayers, fetchPlayersRequest, searchPlayerSuccess, draftPlayerSuccess, undoPlayerSuccess, reset, save, filterPlayerSuccess, resetDraftSuccess, saveTeamSuccess, addPlayer, undo, draft, getTeam } from './redux/actions/data'
 import { fetchUser, logoutUser } from './redux/actions/auth';

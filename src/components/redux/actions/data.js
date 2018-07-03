@@ -126,7 +126,7 @@ export const addPlayer = function (team) {
         const url = `${API_BASE_URL}/user/${googleID}`;
         return fetch(url,
             {
-                method: 'put',
+                method: 'PUT',
                 headers: { 'Content-type': 'application/json', 'Authorization': 'bearer ' + token },
                 body: JSON.stringify({team})
             }

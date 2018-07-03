@@ -53,10 +53,14 @@ export const draftReducer = (state = initialState, action) => {
                 alert('Nothing to Undo');
                 return state;
             }
-            const isDrafted = state.players.findIndex(players => players.drafted === state.currentDraft)
+            const isDrafted = state.players.filter(players => players.drafted === state.currentDraft)
             return Object.assign({}, state, {
                 currentDraft: state.currentDraft - 1,
-                player: state.players[isDrafted].drafted = null,
+                player: isDrafted.forEach(function (player) {
+                    player.drafted = null,
+                    player.pick = null
+                }),
+                team: state.team.filter(players => players.drafted !== null),
                 draftedPlayers: [...state.draftedPlayers.slice(0, state.currentDraft - 1), ...state.draftedPlayers.slice(state.currentDraft, + 1)],
                 fetchError: null
             });
@@ -69,8 +73,10 @@ export const draftReducer = (state = initialState, action) => {
             return Object.assign({}, state, {
                 currentDraft: state.currentDraft = 0,
                 player: isDraftedReset.forEach(function (player) {
-                    player.drafted = null
+                    player.drafted = null,
+                    player.pick = null
                 }),
+                team: [],
                 draftedPlayers: state.draftedPlayers = [],
                 fetchError: null
             });
