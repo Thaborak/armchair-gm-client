@@ -1,4 +1,8 @@
 import { API_BASE_URL } from '../../../config.js';
+import "isomorphic-fetch";
+import { fetchUserSuccess, fetchUserError } from './auth';
+const Cookies = require("js-cookie");
+
 
 export const FETCH_PLAYERS_REQUEST = 'FETCH_PLAYERS_REQUEST';
 export const fetchPlayersRequest = () => ({
@@ -55,6 +59,17 @@ export const resetDraftSuccess = () => ({
     type: RESET_DRAFT_SUCCESS,
 }) 
 
+export const SAVE_TEAM_SUCCESS = 'SAVE_TEAM_SUCCESS';
+export const saveTeamSuccess = (team) => ({
+    type: SAVE_TEAM_SUCCESS,
+    team
+})
+
+export const END_DRAFT_SUCCESS = 'END_DRAFT_SUCCESS';
+export const endDraftSuccess = (team) => ({
+    type: END_DRAFT_SUCCESS,
+    team
+})
 
 
 export const fetchPlayers = () => (dispatch, getState) => {
@@ -91,7 +106,71 @@ export const reset = (dispatch) => {
     console.log('Reset Board')
         .then(() => dispatch(resetDraftSuccess()))
 }
-export const save = () => {
-    //========= coming soon =======//
-    // this.props.dispatch(this.addPlayer(this.props.players));
+export const save = (team) => (dispatch) => {
+    console.log("Save Team")
+    dispatch(saveTeamSuccess(team))
 }
+// PUT request to add player into user schema 
+export const addPlayer = function (team) {
+    return function (dispatch, getState) {
+        const token = Cookies.get('accessToken');
+        const googleID = getState().auth.googleID;
+        const url = `${API_BASE_URL}/user/${googleID}`;      
+        dispatch(endDraftSuccess(team));
+        return fetch(url,
+            {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json', 'Authorization': 'bearer ' + token },
+                body: JSON.stringify({team})
+            }
+        ).then(function (response) {
+            if (response.status < 200 || response.status > 300) {
+                const error = new Error(response.statusText);
+                error.response = response;
+                throw error;
+            }
+            return response.json();
+        })
+            .catch(function (error) {
+                return dispatch(
+                    fetchUserError(error)
+                );
+            });
+    };
+};
+
+// PUT request to remove player from user schema
+export const removePlayer = function (props) {
+    return function (dispatch) {
+        const token = Cookies.get('accessToken');
+        const player = props.player;
+        const url = `/user/team/${player}`;
+        return fetch(url,
+            {
+                method: 'put',
+                headers: { 'Content-type': 'application/json', 'Authorization': 'bearer ' + token },
+                body: JSON.stringify({
+                    'googleID': props.googleID
+                })
+            }
+        ).then(function (response) {
+            if (response.status < 200 || response.status > 300) {
+                const error = new Error(response.statusText);
+                error.response = response;
+                throw error;
+            }
+            return response.json();
+        })
+            .then(function (user) {
+                return dispatch(
+                    fetchUserSuccess(user)
+                );
+            })
+            .catch(function (error) {
+                return dispatch(
+                    fetchUserError(error)
+                );
+            });
+    };
+};
+

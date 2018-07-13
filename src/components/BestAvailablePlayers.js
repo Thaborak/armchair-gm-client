@@ -9,16 +9,17 @@ export default class BestAvailablePlayers extends React.Component {
     return (
       <div>
         <div className='column1'>
-          <div className='PositionTitle'>Best Available</div>
-          <div className='search'>
+          <div className='search-padding-table'>
             <input
-              className='searchbar'
+              className='form-control mr-sm-2'
+              aria-label="Search"
               type="text"
-              placeholder="Search"
+              placeholder="Search By Player"
               onChange={this.props.search}
               value={this.props.query}
             />
           </div>
+          <br/>
           <div className='scrollable'>
             <div className='padding-table'>
               <AvailablePlayers
@@ -26,6 +27,7 @@ export default class BestAvailablePlayers extends React.Component {
                 fields={['Rank', 'Tier', 'Pos', 'Name', 'Bye']}
                 players={this.props.players}
                 draft={(player) => this.props.draft(player)}
+                size={35}
               />
             </div>
           </div>

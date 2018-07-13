@@ -1,24 +1,28 @@
-import { FETCH_USER_SUCCESS, FETCH_USER_ERROR } from "../actions/auth";
+import { FETCH_USER_SUCCESS, FETCH_USER_ERROR, LOGOUT_USER_SUCCESS } from "../actions/auth";
 import update from "react-addons-update";
 
 const initialState = {
-    googleID: ''
+    googleID: null,
+    team: []
 };
 
-export const authReducer = function (state, action) {
-    state = state || initialState;
+export const authReducer = function (state = initialState, action) {
     switch (action.type) {
-
         // Updates state upon fetch user success
         case FETCH_USER_SUCCESS:
             const user = action.user;
             const newState = Object.assign({}, state, {
-                players: user.players,
-                googleID: user.googleID
+                googleID: user.googleID,
+                team: user.team
             });
             return newState;
 
         case FETCH_USER_ERROR:
             return state;
+
+        case LOGOUT_USER_SUCCESS:
+            return initialState
+
     }
+    return state;
 };
