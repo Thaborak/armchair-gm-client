@@ -12,7 +12,6 @@ import './CheatSheet.css';
 
 export class CheatSheet extends React.Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.dispatch(fetchPlayers());
     this.props.dispatch(fetchUser());
 

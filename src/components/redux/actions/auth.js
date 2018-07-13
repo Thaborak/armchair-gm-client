@@ -1,13 +1,12 @@
 import "isomorphic-fetch";
-import { get, remove } from "js-cookie";
-
-
+import { API_BASE_URL } from '../../../config.js';
+const Cookies = require("js-cookie");
 
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
-export const fetchUserSuccess = function (user) {
+export const fetchUserSuccess = user => {
     return {
         type: FETCH_USER_SUCCESS,
-        user: user
+        user
     };
 };
 
@@ -19,6 +18,7 @@ export const fetchUserError = function (error) {
     };
 };
 
+
 export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS'
 export const logoutUserSuccess = function () {
     return {
@@ -27,22 +27,24 @@ export const logoutUserSuccess = function () {
 }
 
 
-// GET request for user info from DB with GoogleID and their Fantasy
+// GET request for user info from DB with GoogleID 
 export const fetchUser = function () {
-    return function (dispatch) {
-        const token = get('accessToken');
+    return function (dispatch, getState) {
+        const url = `${API_BASE_URL}/user`;
+        const token = Cookies.get('accessToken');
         const headers = new Headers({
             Authorization: 'bearer ' + token
         });
-        const url = '/user';
-        return fetch(url, { headers: headers }).then(function (response) {
-            if (response.status < 200 || response.status >= 300) {
-                const error = new Error(response.statusText);
-                error.response = response;
-                throw error;
-            }
-            return response.json();
-        })
+        return fetch(url,
+            { headers: headers })
+            .then(function (response) {
+                if (response.status < 200 || response.status >= 300) {
+                    const error = new Error(response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+                return response.json();
+            })
             .then(function (user) {
                 return dispatch(
                     fetchUserSuccess(user)
@@ -58,11 +60,11 @@ export const fetchUser = function () {
 
 export const logoutUser = function () {
     return function (dispatch) {
-        const token = get('accessToken');
+        const token = Cookies.get('accessToken');
         const headers = new Headers({
             Authorization: 'bearer ' + token
         });
-        const url = '/logout';
+        const url = `${API_BASE_URL}/logout`;
         return fetch(url, { headers: headers }).then(function (response) {
             if (response.status < 200 || response.status >= 300) {
                 const error = new Error(response.statusText);
@@ -72,7 +74,7 @@ export const logoutUser = function () {
             return response;
         })
             .then(function () {
-                remove('accessToken')
+                Cookies.remove('accessToken')
                 window.location.replace("/")
                 return dispatch(
                     logoutUserSuccess()

@@ -3,23 +3,12 @@ import { connect } from 'react-redux';
 import { fetchTeamStats, fetchTeamPic } from '../components/redux/actions/team';
 import Card from './Card';
 
+let card;
+
 
 export function PlayerCard(props) {
-    // fetchTeamPic()
-    // fetchTeamStats()
-    
-    
+        // console.log(props)
 
-
-        //  props.team.forEach(element => {
-        //     console.log(element);
-        //     let fullname = element.Name
-        //     fullname = fullname.split(" ", 2);
-        //     fullname = fullname.join('-').toLowerCase();
-        //     let query = fullname
-        //     this.props.dispatch(fetchTeamStats(query))
-        // });
-        console.log(props)
           return (
               <div id="box1"> <a href="#"><img src={''} alt="" /></a>
                   <h2 className="subtitle">{} {}</h2>
@@ -40,7 +29,7 @@ export function PlayerCard(props) {
 
 const mapStateToProps = (state) => {
     return {
-        stats: state.team || state.team.teamStats.player
+        stats: state.team || state.team.teamStats.player,
     }
 }
 

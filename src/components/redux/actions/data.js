@@ -98,7 +98,7 @@ export const draft = (player) => (dispatch) => {
 }
 
 export const undo = (currentDraft) => (dispatch) => {
-     console.log(currentDraft)
+     console.log("Undo")
         .then(currentDraft => dispatch(undoPlayerSuccess(currentDraft)))
 }
 

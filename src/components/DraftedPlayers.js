@@ -14,8 +14,6 @@ export default class DraftedPlayers extends React.Component {
       let players = this.props.players.slice().filter(players => this.props.players.drafted);
       players = players.sort((a, b) => b.drafted - a.drafted);
     }
-
-console.log(this.props)
     return (
       <div className='buttons'>
           {/* ======UNDO Button =====  */}

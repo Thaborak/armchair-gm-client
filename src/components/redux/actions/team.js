@@ -107,7 +107,7 @@ export const fetchTeamStats = (team) => (dispatch) => {
   }
   let array = team
   array.forEach(element => {
-    console.log(element);
+    // console.log(element);
     let fullname = element.Name
     fullname = fullname.split(" ", 2);
     fullname = fullname.join('-').toLowerCase();
@@ -121,11 +121,11 @@ export const fetchTeamStats = (team) => (dispatch) => {
       },
     })
       .then(res => {
-        console.log(res)
+        // console.log(res)
         return res.json();
       })
       .then(results => {
-        console.log(results)
+        // console.log(results)
         return dispatch(fetchTeamStatsSuccess(results));
       })
   })
@@ -137,30 +137,28 @@ export const fetchTeamPic = (pic) => (dispatch) => {
     return
   }
   let array = pic
-  
-    
-  
-for (let i = 0; i < array.length; i++) {
-  const element = array[i];
-    console.log(element);
+  array.forEach(element => {
+    // console.log(element);
     let fullname = element.Name
     fullname = fullname.split(" ", 2);
     fullname = fullname.join('-').toLowerCase();
     let query = fullname
     const url = `https://api.mysportsfeeds.com/v1.2/pull/nfl/2017-regular/active_players.json?player=${query}`;
-    console.log(query)
-     fetch(url, {
+    // console.log(query)
+    return fetch(url, {
       method: 'GET',
       headers: {
         'Authorization': 'Basic ' + btoa('thaborak' + ':' + 'petproject')
       },
     })
       .then(res => {
-        return res.json();
+        // console.log(res)
+       return res.json();
       })
       .then(results => {
+        // console.log(results);
         return dispatch(fetchTeamPicSuccess(results));
       })
-  }
+  })
   // .catch(err => dispatch(fetchError(err.message)));
 };

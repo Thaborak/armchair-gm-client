@@ -10,11 +10,12 @@ export function Card({
     Position,
     img,
 }) {
-    console.log(FirstName)
     return (
+        
         <span className="search-results">
         <img src={img}/>
             <p>{Position} {FirstName} {LastName}</p>
+            <p>2018 STATS COMING SOON</p>
         </span>
     );
 }
