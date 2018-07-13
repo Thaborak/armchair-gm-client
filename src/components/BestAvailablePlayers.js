@@ -9,7 +9,7 @@ export default class BestAvailablePlayers extends React.Component {
     return (
       <div>
         <div className='column1'>
-          <div className='search'>
+          <div className='search-padding-table'>
             <input
               className='form-control mr-sm-2'
               aria-label="Search"
@@ -19,6 +19,7 @@ export default class BestAvailablePlayers extends React.Component {
               value={this.props.query}
             />
           </div>
+          <br/>
           <div className='scrollable'>
             <div className='padding-table'>
               <AvailablePlayers

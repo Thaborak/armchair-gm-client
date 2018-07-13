@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import NFLTable from './NFLTable'
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'
+import './DraftedPlayers.css';
 
 
 export default class DraftedPlayers extends React.Component {
@@ -16,15 +17,14 @@ export default class DraftedPlayers extends React.Component {
 
 console.log(this.props)
     return (
-      <div>
-        <div className='buttons draft'>
+      <div className='buttons'>
           {/* ======UNDO Button =====  */}
-          <button className='button1' onClick={() => this.props.undo()}>Undo</button>
+          <button className='button' onClick={() => this.props.undo()}>Undo</button>
           {/* ========= RESET BUTTON ========= */}
-          <button className='button2' onClick={() => this.props.reset()}>Reset</button>
+        <button className='button' onClick={() => this.props.reset()}>Reset</button>
           {/* =======SAVE TEAM FEATURE ========= */}
-          <button className='button3' onClick={(team) => this.props.addPlayer(team)}><a href='/dashboard'>Save Team & End Draft</a></button>
-        </div>
+        <button className='button' onClick={(team) => this.props.addPlayer(team)}><a href='/dashboard'>Save Team</a></button>
+         <br />
         <div className='padding-table draft'>
           <NFLTable
             fields={['Name', 'Pos', 'Bye']}

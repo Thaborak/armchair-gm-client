@@ -5,29 +5,35 @@ import NFLTable from './NFLTable';
 import { fetchPlayers } from './redux/actions/data'
 import { fetchTeamStats, fetchTeamPic } from '../components/redux/actions/team';
 import { fetchUser, logoutUser } from './redux/actions/auth';
+import PlayerCard from './PlayerCard';
 
 
 
 export class Dashboard extends React.Component {
+    logOut() {
+        this.props.dispatch(logoutUser());
+    }
 
-    componentWillMount() {
-        this.props.dispatch(fetchPlayers())
+    componentDidMount() {
         this.props.dispatch(fetchUser())
     }
 
+
     render() {
-        console.log(this.props.team)
-        this.props.dispatch(fetchTeamStats(this.props.team))
 
-        // this.props.dispatch(fetchTeamPic(this.props.team))
-
+        // 
+        console.log(this.props)
         return (
 
-            <div>  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-                <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">ArmChair-GM Fantasy Football</a>
+            <div className="cheatsheet">  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+                <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">ArmChair GM </a>
                 <ul class="navbar-nav px-3">
                     <li class="nav-item text-nowrap">
-                        <a class="nav-link" href="/">Sign out</a>
+                        <a class="nav-link" href="/draft#">
+                            Draft Cheatsheet
+                </a>                    </li>
+                    <li class="nav-item text-nowrap">
+                        <a class="nav-link"  href="/">Sign out</a>
                     </li>
                 </ul>
             </nav>
@@ -124,20 +130,19 @@ export class Dashboard extends React.Component {
               </button>
                                 </div>
                             </div>
-
-                            {/* <canvas class="my-4 w-100" id={NFLTable} width="900" height="380"></canvas> */}
-
+                            <PlayerCard
+                                props={this.props}
+                                fetchTeamStats={this.props.dispatch(fetchTeamStats(this.props.team))}
+                                fetchTeamPic={this.props.dispatch(fetchTeamPic(this.props.team))}
+                            />
                             <h2>My Team</h2>
                             <div class="table-responsive">
-                                {/* <table class="table table-striped table-sm"> */}
+                                <table class="table table-striped table-sm">
                                 <NFLTable
                                     players={this.props.team}
-                                    fetch={(e) => this.props.dispatch(fetchPlayers(e.target.value))}
-                                    // search={(e) => this.props.dispatch(searchPlayerSuccess(e.target.value))}
-                                    // query={this.props.query}
                                     fields={['Rank', 'Tier', 'Pos', 'Name', 'Bye']}
                                 />
-                                {/* </table> */}
+                                </table>
                             </div>
                         </main>
                     </div>
@@ -150,14 +155,7 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        players: state.draft.players,
-        filteredPlayers: state.draft.filteredPlayers,
-        currentDraft: state.draft.currentDraft,
-        query: state.draft.query,
-        draftedPlayers: state.draft.draftedPlayers,
-        loading: state.draft.loading,
-        team: state.auth.team,
-        googleID: state.auth.googleID,
+        team: state.auth.team, 
     }
 }
 

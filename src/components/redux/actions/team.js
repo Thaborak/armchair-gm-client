@@ -121,21 +121,27 @@ export const fetchTeamStats = (team) => (dispatch) => {
       },
     })
       .then(res => {
+        console.log(res)
         return res.json();
       })
       .then(results => {
+        console.log(results)
         return dispatch(fetchTeamStatsSuccess(results));
       })
   })
   // .catch(err => dispatch(fetchError(err.message)));
 };
 
-export const fetchTeamPic = (team) => (dispatch) => {
-  if (!team) {
+export const fetchTeamPic = (pic) => (dispatch) => {
+  if (!pic) {
     return
   }
-  let array = team
-  array.forEach(element => {
+  let array = pic
+  
+    
+  
+for (let i = 0; i < array.length; i++) {
+  const element = array[i];
     console.log(element);
     let fullname = element.Name
     fullname = fullname.split(" ", 2);
@@ -143,7 +149,7 @@ export const fetchTeamPic = (team) => (dispatch) => {
     let query = fullname
     const url = `https://api.mysportsfeeds.com/v1.2/pull/nfl/2017-regular/active_players.json?player=${query}`;
     console.log(query)
-    return fetch(url, {
+     fetch(url, {
       method: 'GET',
       headers: {
         'Authorization': 'Basic ' + btoa('thaborak' + ':' + 'petproject')
@@ -155,6 +161,6 @@ export const fetchTeamPic = (team) => (dispatch) => {
       .then(results => {
         return dispatch(fetchTeamPicSuccess(results));
       })
-  })
+  }
   // .catch(err => dispatch(fetchError(err.message)));
 };

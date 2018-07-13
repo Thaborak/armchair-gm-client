@@ -1,26 +1,4 @@
-/*
- * Globals
- */
-
-/* Links */
-/* a,
-a:focus,
-a:hover {
-  color: #fff;
-} */
-
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: .05rem solid #fff;
-}
-
-
-.home {
+/* .home {
     background-image: url('https://i1.wp.com/accjfl.com/wp-content/uploads/2017/08/American-football-ball-cool-wallpapers-wallpaper-desktop-images-background-photos-download-hd-free-iphone-mac-3614x2708.jpg?ssl=1');
     background-size: cover;
     background-repeat: no-repeat;
@@ -32,71 +10,335 @@ a:hover {
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
     height: 100vh;
 
+} */
+
+.landing-page {
+    z-index: 10;
+    position: relative;
 }
 
-.cover-container {
-  max-width: 42em;
+/* ===WELCOME SECTION===*/
+
+.background-1 {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient( rgba(201, 29, 29, 0.9), rgba(58, 63, 68, 0.6)), url('https://cdn-s3.si.com/images/Fantasy-Football-mock-draft.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+    position: relative;
+    height: 100vh;
+    min-height: 750px;
 }
 
-
-/*
- * Header
- */
-.masthead {
-  margin-bottom: 2rem;
+.welcome-section {
+    padding-top: 20vh;
 }
 
-.masthead-brand {
-  margin-bottom: 0;
+.title {
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 700;
 }
 
-.nav-masthead .nav-link {
-  padding: .25rem 0;
-  font-weight: 700;
-  color: rgba(255, 255, 255, .5);
-  background-color: transparent;
-  border-bottom: .25rem solid transparent;
+.sub-title {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
 }
 
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, .25);
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.nav-masthead .nav-link + .nav-link {
-  margin-left: 1rem;
+.login-button {
+    text-decoration: none;
+    width: 200px;
+    padding: 20px;
+    padding-top: 25px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-right: 40px;
+    outline: none;
 }
 
-.nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
+.login-button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #42A4F8;
 }
 
-@media (min-width: 48em) {
-  .masthead-brand {
+.learn-more-button {
+    display: block;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border: 5px solid white;
+    border-radius: 8px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.welcome {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.learn-more-button:hover {
+    background-color: rgba(201, 29, 29, 0.9);
+    color: white;
+}
+
+/* ===FEATURES SECTION=== */
+
+.background-2 {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient( rgba(77, 75, 75, 0.9), rgba(58, 63, 68, 0.6)), url('https://cdn-s3.si.com/s3fs-public/2014/05/falcons-war-room.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+    position: relative;
+    height: 100vh;
+    min-height: 750px;
+    border-top: 1px solid #3a3f44;
+}
+
+.about-button {
+    display: block;
+    width: 200px;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border: 5px solid white;
+    border-radius: 8px;
+}
+
+.about-button:hover {
+    background-color: rgba(77, 75, 75, 0.9);
+    color: white;
+}
+
+.features-container {
+    padding-top: 10vh;
+}
+
+.feature-one,
+.feature-two,
+.feature-three,
+.features-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.feature-image {
+    margin: auto;
+}
+
+.feature-icon {
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin: 0 auto;
+}
+
+.feature-text {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* ===ABOUT SECTION=== */
+
+.background-3 {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient( rgba(74, 158, 218, .9), rgba(58, 63, 68, 0.6)), url('https://i1.wp.com/accjfl.com/wp-content/uploads/2017/08/American-football-ball-cool-wallpapers-wallpaper-desktop-images-background-photos-download-hd-free-iphone-mac-3614x2708.jpg?ssl=1');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+    position: relative;
+    height: 100vh;
+    min-height: 750px;
+    border-top: 1px solid #3a3f44;
+}
+
+.scroll-top-button {
+    display: block;
+    width: 200px;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border: 5px solid white;
+    border-radius: 8px;
+}
+
+.scroll-top-button:hover {
+    background-color: rgba(74, 158, 218, .9);
+    color: white;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: row;
+    width: 75vw;
+    margin: auto;
+    padding-top: 5vh;
+}
+
+.about-left,
+.about-right {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.about-text {
+    padding: 40px;
+}
+
+/* ===RESPONSIVE LAYOUT=== */
+
+@media only screen and (max-width: 850px) {
+    /* ===RESPONSIVE WELCOME SECTION===*/
+    .background-1 {
+        height: 100%;
+    }
+    .welcome-section {
+        padding-top: 10vh;
+    }
+    .title {
+        font-size: 36px;
+        text-align: center;
+    }
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .login-button,
+    .learn-more-button {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        margin-top: 20px;
+    }
+    .learn-more-button {
+        margin-top: 20px;
+        margin-bottom: 60px;
+    }
+    /* ===RESPONSIVE FEATURES SECTION=== */
+    .background-2 {
+        height: 100%;
+    }
+    .features-list {
+        display: flex;
+        flex-direction: column;
+    }
+    .about-button {
+        margin: auto;
+        margin-bottom: 60px;
+    }
+    .feature-text {
+        font-size: 26px;
+    }
+    /* ===RESPONSIVE ABOUT SECTION=== */
+    .background-3 {
+        height: 100%;
+    }
+    .text-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .about-text {
+        text-align: left;
+        padding: 0px;
+    }
+    .scroll-top-button {
+        margin: auto;
+        margin-bottom: 60px;
+    }
+}
+
+.border-none {
+    border: none !important;
+}
+
+/* ===RESPONSIVE GRID=== */
+
+.landing-row {
+    max-width: 1400px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.landing-row::before,
+.landing-row::after {
+    display: table;
+    content: '';
+}
+
+.landing-row::after {
+    clear: both;
+}
+
+.landing-col-4,
+.landing-col-6,
+.landing-col-12 {
     float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
+    padding-left: 1.04166666%;
+    padding-right: 1.04166666%;
+    width: 100%;
 }
 
-
-/*
- * Cover
- */
-.cover {
-  padding: 0 1.5rem;
-}
-.cover .btn-lg {
-  padding: .75rem 1.25rem;
-  font-weight: 700;
+.landing-col-4,
+.landing-col-6,
+.landing-col-12 {
+    width: 100%;
 }
 
-
-/*
- * Footer
- */
-.mastfoot {
-  color: rgba(255, 255, 255, .5);
+@media only screen and (min-width: 1050px) {
+    /* 4 columns */
+    .landing-col-4 {
+        width: 33.33%;
+    }
+    /* 6 columns */
+    .landing-col-6 {
+        width: 50%;
+    }
+    /* 12 columns */
+    .landing-col-12 {
+        width: 100%;
+    }
 }

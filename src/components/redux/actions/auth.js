@@ -18,6 +18,7 @@ export const fetchUserError = function (error) {
     };
 };
 
+
 export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS'
 export const logoutUserSuccess = function () {
     return {
@@ -57,27 +58,27 @@ export const fetchUser = function () {
     }
 };
 
-// export const logoutUser = function () {
-//     return function (dispatch) {
-//         const token = get('accessToken');
-//         const headers = new Headers({
-//             Authorization: 'bearer ' + token
-//         });
-//         const url = `${API_BASE_URL}/logout`;
-//         return fetch(url, { headers: headers }).then(function (response) {
-//             if (response.status < 200 || response.status >= 300) {
-//                 const error = new Error(response.statusText);
-//                 error.response = response;
-//                 throw error;
-//             }
-//             return response;
-//         })
-//             .then(function () {
-//                 remove('accessToken')
-//                 window.location.replace("/")
-//                 return dispatch(
-//                     logoutUserSuccess()
-//                 );
-//             })
-//     }
-// };
+export const logoutUser = function () {
+    return function (dispatch) {
+        const token = Cookies.get('accessToken');
+        const headers = new Headers({
+            Authorization: 'bearer ' + token
+        });
+        const url = `${API_BASE_URL}/logout`;
+        return fetch(url, { headers: headers }).then(function (response) {
+            if (response.status < 200 || response.status >= 300) {
+                const error = new Error(response.statusText);
+                error.response = response;
+                throw error;
+            }
+            return response;
+        })
+            .then(function () {
+                Cookies.remove('accessToken')
+                window.location.replace("/")
+                return dispatch(
+                    logoutUserSuccess()
+                );
+            })
+    }
+};

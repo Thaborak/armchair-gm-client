@@ -28,11 +28,24 @@ export class CheatSheet extends React.Component {
 
     return (
 
-      <div class="container">
 
-        <h1>The Draft Board</h1>
-        <p class="lead">Click on each player to draft them as along side your live draft</p>
-        <div class="row">
+      <div className="container cheatsheet">
+
+        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+          <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="/">ArmChair GM</a>
+          <ul className="navbar-nav px-3">
+            <li className="nav-item text-nowrap">
+              <a className="nav-link" href="/dashboard"> To Dashboard  </a>
+            </li>
+            <li className="nav-item text-nowrap">
+              <a className="nav-link" href="/">Sign out</a>
+            </li>
+          </ul>
+        </nav>
+        <br />
+        <div className="row">
+          <h1 className="no-top">The Draft Board</h1>
+          <p className="lead">Click on each player to draft them as along side your live draft. Then click on the players you drafted in the righthand column below.</p>
           {/* cheatSheet table table-bordered table-striped player-table table-hover pad-below tablesorter" */}
           <div class="col-md-3">
             <h2 className='PositionTitle'>Best Available</h2>
@@ -47,7 +60,7 @@ export class CheatSheet extends React.Component {
 
           <div className='col-md-3 '>
             <div className='padding-table'>
-              <h3>Runningbacks</h3>
+              <h2>Runningbacks</h2>
               <AvailablePlayers
                 fields={['Tier', 'Name', 'Bye']}
                 players={this.props.players}
@@ -56,7 +69,7 @@ export class CheatSheet extends React.Component {
                 Pos='RB'
               />
 
-              <h3>Wide Receivers</h3>
+              <h2>Wide Receivers</h2>
               <AvailablePlayers
                 fields={['Tier', 'Name', 'Bye']}
                 players={this.props.players}
@@ -69,7 +82,7 @@ export class CheatSheet extends React.Component {
 
           <div className='col-md-3'>
             <div className='padding-table'>
-              <h3>Quarterbacks</h3>
+              <h2>Quarterbacks</h2>
               <AvailablePlayers
                 fields={['Tier', 'Name', 'Bye']}
                 players={this.props.players}
@@ -77,7 +90,7 @@ export class CheatSheet extends React.Component {
                 size={19}
                 Pos='QB'
               />
-              <h3>Tightends</h3>
+              <h2>Tightends</h2>
               <AvailablePlayers
                 fields={['Tier', 'Name', 'Bye']}
                 players={this.props.players}
