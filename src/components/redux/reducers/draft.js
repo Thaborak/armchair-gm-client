@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import { FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS, FETCH_PLAYERS_ERROR, SEARCH_PLAYERS_SUCCESS, UNDO_DRAFT_SUCCESS, DRAFT_PLAYER_SUCCESS, RESET_DRAFT_SUCCESS, SAVE_TEAM_SUCCESS, END_DRAFT_SUCCESS, } from '../actions/data';
 
 const initialState = {
@@ -73,7 +74,7 @@ export const draftReducer = (state = initialState, action) => {
             return Object.assign({}, state, {
                 currentDraft: state.currentDraft = 0,
                 player: isDraftedReset.forEach(function (player) {
-                    player.drafted = null,
+                        player.drafted = null,
                         player.pick = null
                 }),
                 team: [],
