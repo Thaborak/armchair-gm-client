@@ -25,7 +25,7 @@ export class Dashboard extends React.Component {
                 <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">ArmChair GM </a>
                 <ul class="navbar-nav px-3">
                     <li class="nav-item text-nowrap">
-                        <a class="nav-link" href="/draft#">
+                        <a class="nav-link" href="/draft">
                             Draft Cheatsheet
                 </a>                    </li>
                     <li class="nav-item text-nowrap">
@@ -128,8 +128,8 @@ export class Dashboard extends React.Component {
                             </div>
                             <PlayerCard
                                 props={this.props}
-                                fetchTeamStats={this.props.dispatch(fetchTeamStats(this.props.team))}
-                                fetchTeamPic={this.props.dispatch(fetchTeamPic(this.props.team))}
+                                // fetchTeamStats={this.props.dispatch(fetchTeamStats(this.props.team))}
+                                // fetchTeamPic={this.props.dispatch(fetchTeamPic(this.props.team))}
                             />
                             <h2>My Team</h2>
                             <div class="table-responsive">
